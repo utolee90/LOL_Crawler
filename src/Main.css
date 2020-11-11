@@ -1,0 +1,4 @@
+.res-table, .res-table *{
+    border: 1px solid grey;
+    border-collapse:collapse;
+}
