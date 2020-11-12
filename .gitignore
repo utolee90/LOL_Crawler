@@ -5,6 +5,8 @@
 /.pnp
 .pnp.js
 /.vscode
+/Crawl/debug.log
+/Crawl/desktop.ini
 
 # testing
 /coverage
@@ -19,6 +21,11 @@
 .env.test.local
 .env.production.local
 /Crawl/data.json 
+/Crawl/champ.json
+/Crawl/asynctest.py
+/Crawl/asynctest_2.py
+/Crawl/crawl_async.py
+/Crawl/test_data.html
 
 
 npm-debug.log*

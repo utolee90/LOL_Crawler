@@ -2,7 +2,7 @@
 ## 특징
 - [op.gg](https://op.gg/) 웹사이트에서 Python의 lxml 모듈을 이용해서 정보를 가져온 후에 React로 파일을 띄워주는 예제입니다. 
 ## 요구사항
-- Python - flask, flask_cors, lxml 확장기능
+- Python - flask, flask_cors, lxml, selenium 확장기능
 - Node JS -  axios, antd 확장기능
 ## 사용방법
 1. `git clone https://github.com/utolee90/LOL_Crawler`를 입력해서 이 리포지토리의 데이터를 가져옵니다.
