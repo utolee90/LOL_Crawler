@@ -5,6 +5,7 @@ from urllib import parse
 from lxml import etree, html
 import json, time, os
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 
 app = Flask(__name__)
 CORS(app)
@@ -13,7 +14,7 @@ CORS(app)
 options = webdriver.ChromeOptions() #headless option  사용 - 창 띄우지 않고 실행
 options.add_argument('headless') #반드시 지정
 options.add_argument('window-size=1920x1080') #size에 맞추어서 디자인. 사실 불필요. 
-options.add_argument("disable-gpu") #gpu 가속 끄기.
+#options.add_argument("disable-gpu") #gpu 가속 끄기.
 
 #user data 생성
 if os.path.isfile('data.json'):
@@ -37,17 +38,17 @@ with open('champion_id_and_name_list_kor.json', 'r', encoding='utf8') as g:
 
 def match_kor_eng(name): #이름 확인
     global id_name_list, id_name_kor_list
-
+    key='0'
     if name in id_name_list.values():
         for i in id_name_list.keys():
             if id_name_list[i] == name:
-                key = i
+                key = str(i)
                 break
         return id_name_kor_list[key]
     elif name in id_name_kor_list.values():
         for i in id_name_kor_list.keys():
-            if id_name_list[i] == name:
-                key = i
+            if id_name_kor_list[i] == name:
+                key = str(i)
                 break
         return id_name_list[key]
     elif name in id_name_list.keys():
@@ -67,7 +68,7 @@ def user(name):
         p_name = parse.quote_plus(name)
         driver = webdriver.Chrome(options=options)
         driver.get(f'https://www.op.gg/summoner/champions/userName={p_name}')
-        driver.find_element_by_xpath('//*[@id="champion_season"]/li[2]/a').click()
+        driver.find_element_by_xpath('//*[@id="champion_season"]/li[2]/a').send_keys(Keys.ENTER)
         trs = driver.find_elements_by_xpath("//*[@id=\"SummonerLayoutContent\"]/div[3]/div/div/div[2]/div[1]/table/tbody/tr")
         
         for tr in trs:
@@ -75,7 +76,7 @@ def user(name):
                 champ = tr.find_elements_by_xpath('./td[3]/a')[0].text
                 win_cnt = tr.find_elements_by_xpath('./td[4]/div/div/div[2]')[0].text.replace('W','승')
                 lose_cnt = tr.find_elements_by_xpath('./td[4]/div/div/div[4]')[0].text.replace('L','패')
-                user_data_new[champ] = {'win':win_cnt, 'lose':lose_cnt}
+                user_data_new[champ] = [win_cnt, lose_cnt] # 리스트로 긁어오기. React 오류 방지
             except:
                 pass
         
@@ -95,13 +96,13 @@ def champ(name):
     nowtime = float(time.time())
     if not champ_data.get(name) or nowtime - champ_data[name]['time']>86400: #데이터가 없거나 하루 이상 지날 때 추가
         champ_data_new = {}
-        if name in id_name_list.values():
-            p_name = name.lower() #소문자로 바꾸어주기...
-        elif name in id_name_list.keys():
+        if name.title() in id_name_list.values():
+            p_name = name.lower() #소문자로 바꾸어주기... 
+        elif name in id_name_list.keys(): 
             p_name = id_name_list[name].lower()
         elif name in id_name_kor_list.values():
             p_name = match_kor_eng(name).lower()
-        driver= webdriver.Chrome()#options=options) #창 띄우지 않고 작동.
+        driver= webdriver.Chrome() #headless가 오작동... 할수 없이 head 켜고 작동
         driver.get(f'https://www.leagueofgraphs.com/champions/stats/{p_name}/kr')
         time.sleep(10)
         total_popularity = driver.find_element_by_xpath("//*[@id=\"graphDD1\"]").text.strip()
@@ -123,12 +124,13 @@ def champ(name):
         champ_data_new['time'] = float(time.time())
         if len(champ_data_new.keys())>1: #챔피언이 하나라도 등록될 때에만.
             champ_data[name] = champ_data_new
+        driver.quit() #드라이버를 끄자..
 
     
     champ_data_str = json.dumps(champ_data[name])
     with open('champ.json', 'w', encoding='utf8') as f:
         json.dump(champ_data, f)
-    driver.quit()
+    
     return champ_data_str
 
 
@@ -136,3 +138,4 @@ def champ(name):
 
 if __name__ == '__main__':
     app.run(host='localhost', port=5000)
+    
