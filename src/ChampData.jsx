@@ -67,7 +67,7 @@ const array_id = Object.keys(champ_list_id);
 const array_en = Object.values(champ_list_id);
 const array_kr = Object.values(champ_list_kr_id);
 const array_en_simple = array_en.map(v => {
-    var w = v.replace(' ', '').replace('\'', '').toLowerCase()
+    var w = v.replace(' ', '').replace('\'', '').replace('.','').toLowerCase()
     if (w === 'nunu&willump' ) { return 'nunu';}
     else {    return w; }
 });
@@ -79,7 +79,7 @@ const array_kr_simple = array_kr.map(v => {
 
 const Simplify = (name) =>{ //이름 단순화
     
-    var w = name.replace(' ', '').replace('\'', '').replace('%20','').replace('_','').toLowerCase();
+    var w = name.replace(' ', '').replace('\'', '').replace('%20','').replace('_','').replace('.','').toLowerCase();
     if (w.includes('nunu')){
         return 'nunu';    
     }
