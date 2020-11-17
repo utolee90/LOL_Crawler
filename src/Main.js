@@ -4,7 +4,7 @@ import {Tabs, Input, Button, Table } from 'antd';
 import 'antd/dist/antd.css';
 import './Main.css';
 import BrowserRouter from 'react-router-dom';
-import {ChampData, array_id, array_en, array_kr} from './ChampData.jsx';
+import {ChampData, array_id, array_en, array_kr, array_en_simple, array_kr_simple} from './ChampData.jsx';
 
 const {TabPane} = Tabs;
 const GetURL = 'http://localhost:5000/'
@@ -30,12 +30,17 @@ function SearchBySummoner(){
     }
 
     function champ_name_link(text) { 
-        if (array_kr.indexOf(text) !==-1) {
-        var valx = ChampData(text, 'kr', 'en').toLowerCase();
+        if (array_kr.indexOf(text) !==-1 ) {
+        var valx = array_en_simple[array_kr.indexOf(text)] // en simple
         var url = 'https://www.op.gg/champion/'+valx+'/statistics/'
         return <a href={url}>{text}</a>;
         }
-        else{
+        else if (array_kr_simple.indexOf(text) !==-1 ) {
+            valx = array_en_simple[array_kr_simple.indexOf(text)] // en simple
+            url = 'https://www.op.gg/champion/'+valx+'/statistics/'
+            return <a href={url}>{text}</a>;
+            }
+        else {
             return text;
         }
     }
@@ -67,8 +72,10 @@ function SearchBySummoner(){
     
     return (<div>
         <h2>소환사 이름으로 챔피언별 전적 검색</h2>
+        <div style={{'width':'480px'}}>
         <Input placeholder="소환사명" name="username" onChange={changeName} style={{'width':'300px', 'float':'left'}}/>
-        <Button type="button" onClick={submit_data} style={{'width':'96px', 'float':'left'}}> 소환사 검색 </Button>
+        <Button type="button" onClick={submit_data} style={{'width':'96px'}}> 소환사 검색 </Button>
+        </div>
         <br/>
         <h3>출력 결과 </h3>
         <div style={{'width':'400px', 'height':'400px', 'overflow':'auto'}}>
@@ -82,6 +89,7 @@ function SearchBySummoner(){
 function SearchByChampion(){
 
     const [champion, setChampion] = React.useState(''); 
+    const [temp, setTemp] = React.useState(''); //갱신 오류를 방지하기 위해 챔피언 이름 임시저장 변수 생성
     const [result, setResult] = React.useState(Object()); //빈 오브젝트 생성
 
     const toTitleCase = (str) => {
@@ -94,25 +102,29 @@ function SearchByChampion(){
       }
 
     const changeName = (e) =>{ //이름 지정
-        if (array_id.indexOf(e.target.value) !=-1) { //숫자
-            setChampion(toTitleCase(ChampData(e.target.value, 'num', 'en')));
+
+        if (array_id.indexOf(e.target.value) !==-1  ){ //숫자
+            setChampion(ChampData(e.target.value, 'num', 'en', true));
+        } 
+        
+        else if (array_en.indexOf(e.target.value) !==-1 || array_en_simple.indexOf(e.target.value) !==-1 ) { //영어
+            setChampion(ChampData(e.target.value, 'en', 'en', true));
         }
-        else if (array_en.indexOf(e.target.value) !=-1) { //영어
-            setChampion(toTitleCase(e.target.value));
-        }
-        else if (array_en.indexOf(e.target.value) !=-1){ //한글
-            setChampion(toTitleCase(ChampData(e.target.value, 'kr', 'en')));
-            
+        else if (array_kr.indexOf(e.target.value) !==-1 || array_kr_simple.indexOf(e.target.value) !==-1 ){ //한글
+            setChampion(ChampData(e.target.value, 'kr', 'en', true));
         }
         console.log(champion)
     }
 
     const submit_data = () =>{
+        setTemp(champion); // 변수명을 챔피언 이름으로 일시지정.
         Axios.get(GetURL+'champ/'+champion)
         .then(res =>{ 
             const { data } = res;
             console.log(data);
-            setResult(data)
+            setResult(data);
+            
+             
         })
         .catch(error => console.log(error))
     }
@@ -137,36 +149,36 @@ function SearchByChampion(){
         return res;
     }
 
-    if (result['time']) {
+    if (result[(champion.toLowerCase())] && result['time']) {
 
-    table_data = null_drop(  Object.keys(result[(champion.toLowerCase())]).map(v => {
-        if (['Top', 'Mid', 'Jungler', 'Support','AD Carry'].indexOf(v)!=-1){
-            return (v?
-                {key:Object.keys(result[(champion.toLowerCase())]).indexOf(v),
-                position : v,
-                pick_rate : result[(champion.toLowerCase())][v]['popularity'],
-                win_rate : result[(champion.toLowerCase())][v]['win']
+        table_data = null_drop(  Object.keys(result[(temp.toLowerCase())]).map(v => {
+            if (['Top', 'Mid', 'Jungler', 'Support','AD Carry'].indexOf(v)!==-1){
+                return (v?
+                    {key:Object.keys(result[(temp.toLowerCase())]).indexOf(v),
+                    position : v,
+                    pick_rate : result[(temp.toLowerCase())][v]['popularity'],
+                    win_rate : result[(temp.toLowerCase())][v]['win']
+                    }
+                   :null);
                 }
-               :null);
-            }
-        }));
-     
-    }
-
+            }));
+        }
 
     return (<div>
         <h2>챔피언별 승률/전적</h2>
+        <div style={{'width':'480px'}}>
         <Input placeholder="챔피언명(한글/영어)" name="champion" onChange={changeName} style={{'width':'300px', 'float':'left'}}/>
-        <Button type="button" onClick={submit_data} style={{'width':'96px', 'float':'left'}}>챔피언 검색 </Button>
+        <Button type="button" onClick={submit_data} style={{'width':'96px'}}>챔피언 검색 </Button>
+        </div>
         <br/>
-        <h3>출력 결과 </h3>
+        <h3>챔피언 {ChampData(champion, 'en', 'kr', false)} 전적</h3>
         <div style={{'width':'400px', 'height':'300px'}}>
-        <span>전체 픽률 : {result[(champion.toLowerCase())]!=undefined? 
-                            result[(champion.toLowerCase())]['popularity'] : null} </span>
-        <span> 전체 승률 : {result[(champion.toLowerCase())]!=undefined?
-                            result[(champion.toLowerCase())]['win'] : null} </span>
-        <span> 전체 밴률 : {result[(champion.toLowerCase())]!=undefined? 
-                            result[(champion.toLowerCase())]['ban']: null} </span>
+        <span>전체 픽률 : {result[(temp.toLowerCase())]!==undefined? 
+                            result[(temp.toLowerCase())]['popularity'] : null} </span>
+        <span> 전체 승률 : {result[(temp.toLowerCase())]!==undefined?
+                            result[(temp.toLowerCase())]['win'] : null} </span>
+        <span> 전체 밴률 : {result[(temp.toLowerCase())]!==undefined? 
+                            result[(temp.toLowerCase())]['ban']: null} </span>
         <Table columns={table_columns} dataSource={table_data?table_data:[]} pagination={{pageSize:6}}/>
         
         </div> 
@@ -176,7 +188,7 @@ function SearchByChampion(){
 
 function Main() {
     return(
-    <Tabs className="main-content" defaultActiveKey="1" style={{'width':'400px'}}>
+    <Tabs className="main-content" defaultActiveKey="1" style={{'width':'480px', 'padding':'20px'}}>
         <TabPane tab="소환사별 검색" key="1">
             <SearchBySummoner/>
         </TabPane>

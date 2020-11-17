@@ -66,10 +66,34 @@ const champ_list_kr_id = {
 const array_id = Object.keys(champ_list_id);
 const array_en = Object.values(champ_list_id);
 const array_kr = Object.values(champ_list_kr_id);
+const array_en_simple = array_en.map(v => {
+    var w = v.replace(' ', '').replace('\'', '').toLowerCase()
+    if (w === 'nunu&willump' ) { return 'nunu';}
+    else {    return w; }
+});
+const array_kr_simple = array_kr.map(v => {
+    var w = v.replace(' ', '')
+    if (w ==='누누와윌럼프') { return '누누';}
+    else {   return w; }
+});
 
-const ChampData = (name, d_from, d_to) => {
+const Simplify = (name) =>{ //이름 단순화
     
+    var w = name.replace(' ', '').replace('\'', '').replace('%20','').replace('_','').toLowerCase();
+    if (w.includes('nunu')){
+        return 'nunu';    
+    }
+    else if (w.includes('누누')){
+        return '누누';
+    }
+    else{
+        return w;
+    }
     
+}
+
+
+const ChampData = (name, d_from, d_to, simplify) => { //단순화 작업 추가
     
 
     switch(d_from){
@@ -77,31 +101,37 @@ const ChampData = (name, d_from, d_to) => {
         case 'int':
             let idn = array_id.indexOf(name);
             if (d_to === 'en') {
-                return array_en[idn];
+                return simplify?array_en_simple[idn]:array_en[idn];
             }
             else if (d_to === 'kr') {
-                return array_kr[idn];
+                return simplify?array_kr_simple[idn]:array_kr[idn];
             }
         case 'en':
-            let ide = array_en.indexOf(name);
+            let ide = array_en_simple.indexOf(Simplify(name));
             if (d_to === 'num' || d_to === 'int') {
                 return array_id[ide];
             }
             else if (d_to === 'kr') {
-                return array_kr[ide];
+                return simplify?array_kr_simple[ide]:array_kr[ide];
+            }
+            else if (d_to === 'en') {
+                return simplify?array_en_simple[ide]:array_en[ide];
             }
         case 'kr':
-            let idk = array_kr.indexOf(name);
+            let idk = array_kr_simple.indexOf(Simplify(name));
             if (d_to === 'num' || d_to === 'int') {
                 return array_id[idk];
             }
-            else if (d_to === 'en') {
-                return array_en[idk];
+            if (d_to === 'en') {
+                return simplify?array_en_simple[idk]:array_en[idk];
             }
-
+            else if (d_to === 'kr') {
+                return simplify?array_kr_simple[idk]:array_kr[idk];
+            }
                 
     }
 
 }
 
-export {ChampData, array_id, array_kr, array_en};
+
+export {ChampData, array_id, array_kr, array_en, array_en_simple, array_kr_simple};
