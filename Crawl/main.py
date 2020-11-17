@@ -136,7 +136,7 @@ def user(name):
     
     user_data_str = json.dumps(user_data[name], ensure_ascii=False)
     
-    return f"<head><meta charset='utf-8'></head><body>{user_data_str}</body>"
+    return user_data_str
 
 @app.route('/champ/<name>')
 def champ(name):
@@ -192,7 +192,7 @@ def champ(name):
 
     champ_data_str = json.dumps(champ_data[name])
     
-    return f"<head><meta charset='utf-8'></head><body>{champ_data_str}</body>"
+    return champ_data_str
 
 
 if __name__ == '__main__':
