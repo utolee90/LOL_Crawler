@@ -26,7 +26,7 @@
 /Crawl/asynctest_2.py
 /Crawl/crawl_async.py
 /Crawl/test_data.html
-
+/Crawl/test.py
 
 npm-debug.log*
 yarn-debug.log*
