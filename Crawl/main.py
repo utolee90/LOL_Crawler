@@ -99,6 +99,18 @@ def user(name):
         user_data_new = {}
         p_name = parse.quote_plus(name)
         driver = webdriver.Chrome(options=options)
+        # 표현 언어를 영어로 바꾸고 싶으면 이 옵션 활성화시키기. 
+        # driver.get('https://op.gg/')
+        # driver.find_element_by_xpath('/html/body/div[2]/header/div[2]/div/div/div/div/div/button').click()
+        # time.sleep(2)
+        # lang_list = driver.find_elements_by_class_name('setting-list__item')
+        # for lang in lang_list:
+        #     if "English" in lang.text:
+        #         lang.click()
+        # time.sleep(2)
+        # driver.find_elements_by_class_name('setting__button')[0].click()
+        # time.sleep(2)
+        # 옵션 끝
         driver.get(f'https://www.op.gg/summoner/champions/userName={p_name}')
         driver.find_element_by_xpath('//*[@id="champion_season"]/li[2]/a').send_keys(Keys.ENTER)
         trs = driver.find_elements_by_xpath("//*[@id=\"SummonerLayoutContent\"]/div[3]/div/div/div[2]/div[1]/table/tbody/tr")
