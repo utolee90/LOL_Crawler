@@ -106,21 +106,25 @@ def user(name):
         for tr in trs:
             try:
                 champ = tr.find_elements_by_xpath('./td[3]/a')[0].text
-                win_cnt = tr.find_elements_by_xpath('./td[4]/div/div/div[2]')[0]
-                lose_cnt = tr.find_elements_by_xpath('./td[4]/div/div/div[4]')[0]
+                win_cnt = tr.find_elements_by_xpath('./td[4]/div/div/div[2]')[0].text
+                lose_cnt = tr.find_elements_by_xpath('./td[4]/div/div/div[4]')[0].text
                 user_data_new[champ] = [win_cnt, lose_cnt] # 리스트로 긁어오기. React 오류 방지
             except:
                 pass
         
         user_data_new['time'] = float(time.time())
+        
         if len(user_data_new.keys())>1: #챔피언이 하나라도 등록될 때에만.
             user_data[name] = user_data_new
-
+            
+        with open('data.json', 'w', encoding='utf8') as f:
+            json.dump(user_data, f, ensure_ascii=False)
+        
+        driver.quit()
     
-    user_data_str = json.dumps(user_data[name])
-    with open('data.json', 'w', encoding='utf8') as f:
-        json.dump(user_data, f)
-    return user_data_str
+    user_data_str = json.dumps(user_data[name], ensure_ascii=False)
+    
+    return f"<head><meta charset='utf-8'></head><body>{user_data_str}</body>"
 
 @app.route('/champ/<name>')
 def champ(name):
@@ -168,15 +172,15 @@ def champ(name):
         champ_data_new['time'] = float(time.time())
         if len(champ_data_new.keys())>1: #챔피언이 하나라도 등록될 때에만.
             champ_data[name] = champ_data_new
+            with open('champ.json', 'w', encoding='utf8') as f:
+                json.dump(champ_data, f, ensure_ascii=False)
         
         driver.quit() #드라이버를 끄자..
         
 
     champ_data_str = json.dumps(champ_data[name])
-    with open('champ.json', 'w', encoding='utf8') as f:
-        json.dump(champ_data, f)
     
-    return champ_data_str
+    return f"<head><meta charset='utf-8'></head><body>{champ_data_str}</body>"
 
 
 if __name__ == '__main__':

@@ -62,7 +62,10 @@ def match_kor_eng(name, simple=False): #챔피언 이름 확인
     elif name in id_name_list.keys():
         return name_kor_simple[key] if simple else id_name_kor_list[name]
 
-print(simplify('Twisted%20Fate') in name_eng_simple.values())
+with open('data.json', 'r', encoding='utf8') as f:
+    user_data = json.load(f)
 
-print(name_eng_simple)
-    
+#print(simplify('Twisted%20Fate') in name_eng_simple.values())
+
+#print(name_eng_simple)
+print(user_data)
