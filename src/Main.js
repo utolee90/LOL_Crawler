@@ -5,6 +5,7 @@ import 'antd/dist/antd.css';
 import './Main.css';
 import BrowserRouter from 'react-router-dom';
 import {ChampData, array_id, array_en, array_kr, array_en_simple, array_kr_simple} from './ChampData.jsx';
+import {LinkOutlined} from '@ant-design/icons';
 
 const {TabPane} = Tabs;
 const GetURL = 'http://localhost:5000/'
@@ -72,14 +73,15 @@ function SearchBySummoner(){
     
     return (<div>
         <h2>소환사 이름으로 챔피언별 전적 검색</h2>
+        <h3>참조 : <a href="https://op.gg/champion/"><LinkOutlined/> OP.GG</a> </h3>
         <div style={{'width':'480px'}}>
         <Input placeholder="소환사명" name="username" onChange={changeName} style={{'width':'300px', 'float':'left'}}/>
         <Button type="button" onClick={submit_data} style={{'width':'96px'}}> 소환사 검색 </Button>
         </div>
         <br/>
         <h3>출력 결과 </h3>
-        <div style={{'width':'400px', 'height':'400px', 'overflow':'auto'}}>
-        <Table columns={table_columns} dataSource={table_data?table_data:[]} pagination={{pageSize:5}}/>
+        <div style={{'width':'480px', 'height':'400px', 'overflow':'auto'}}>
+        <Table columns={table_columns} dataSource={table_data?table_data:[]} pagination={{pageSize:5, padding:'20px', size:'small'}} style={{'width':'400px'}}/>
         
         </div> 
 
@@ -166,8 +168,9 @@ function SearchByChampion(){
 
     return (<div>
         <h2>챔피언별 승률/전적</h2>
+        <h3>참조 : <a href="https://leagueofgraphs.com/champions"><LinkOutlined/> League of Graphs</a> </h3>
         <div style={{'width':'480px'}}>
-        <Input placeholder="챔피언명(한글/영어)" name="champion" onChange={changeName} style={{'width':'300px', 'float':'left'}}/>
+        <Input placeholder="챔피언명(한글/영어/챔피언ID)" name="champion" onChange={changeName} style={{'width':'300px', 'float':'left'}}/>
         <Button type="button" onClick={submit_data} style={{'width':'96px'}}>챔피언 검색 </Button>
         </div>
         <br/>
@@ -179,7 +182,7 @@ function SearchByChampion(){
                             result[(temp.toLowerCase())]['win'] : null} </span>
         <span> 전체 밴률 : {result[(temp.toLowerCase())]!==undefined? 
                             result[(temp.toLowerCase())]['ban']: null} </span>
-        <Table columns={table_columns} dataSource={table_data?table_data:[]} pagination={{pageSize:6}}/>
+        <Table columns={table_columns} dataSource={table_data?table_data:[]} pagination={{pageSize:6, hideOnSinglePage:true}} style={{'width':'400px'}}/>
         
         </div> 
 
@@ -188,7 +191,7 @@ function SearchByChampion(){
 
 function Main() {
     return(
-    <Tabs className="main-content" defaultActiveKey="1" style={{'width':'480px', 'padding':'20px'}}>
+    <Tabs className="main-content" defaultActiveKey="1" style={{'width':'480px', 'padding':'10px'}}>
         <TabPane tab="소환사별 검색" key="1">
             <SearchBySummoner/>
         </TabPane>
