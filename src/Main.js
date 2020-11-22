@@ -236,7 +236,7 @@ function TeamChampWin() {
 
     const setNameEng = (data) => { // 영어이름으로 고치기... 
         if (array_id.indexOf(data) !==-1  ){ //숫자
-            return ChampData(data, 'num', 'en', false);
+            return ChampData(data, 'num', 'en', true);
         }
         else {
             data = data.replace(' ','').replace("'", "").replace('.','').replace('_', '').toLowerCase(); // 문자 단순화
@@ -247,10 +247,10 @@ function TeamChampWin() {
                 data = 'nunu';
             }
             if (array_en_simple.indexOf(data) !==-1 ) { //영어
-                return ChampData(data, 'en', 'en', false);
+                return ChampData(data, 'en', 'en', true);
             }
             else if (array_kr_simple.indexOf(data) !==-1 ){ //한글
-                return ChampData(data, 'kr', 'en', false);
+                return ChampData(data, 'kr', 'en', true);
             }
             else {
                 return data;
@@ -264,27 +264,26 @@ function TeamChampWin() {
     const send_data = () =>{
         if (user.filter(Boolean).length + champ.filter(Boolean).length ===10) { //모두 null이 아닐 때에만 데이터 전송.
         setWinRate(['자료없음', '자료없음', '자료없음', '자료없음', '자료없음']);
-        for (var i=0; i<5;  i++){
-            var cname = setNameEng(champ[i]);
+        var cname = [0,1,2,3,4].map(v=> setNameEng(champ[v]));
+        [0,1,2,3,4].map( i=> {
             Axios.get(GetURL+'user/'+user[i])
             .then(res =>{ 
             const { data } = res;
             console.log(data);
             setResult(data);
-            if (result['time'] && result[cname]) { //승률 정보 갱신.
-                var win_rate_dat = Math.round( parseInt(result[cname][0])*10000/( parseInt(result[cname][0])+parseInt(result[cname][1])))/100 + '%'; 
-                setWinRate([0,1,2,3,4].map(v=> (i===v?win_rate_dat:winrate[v])));
-            }
-            else if (result['time'] && !result[cname]) {
-                setWinRate([0,1,2,3,4].map(v=> (i===v?'전적 없음':winrate[v])));
-            }
-        })
-        .catch(error => {console.log(error);
-            setWinRate([0,1,2,3,4].map(v=> (i===v?'조회 실패':winrate[v])));
-        })
-
-
+            console.log(i, user[i], cname[i], data[cname[i]]);
+        if (data['time'] && data[cname[i]]) { //승률 정보 갱신.
+            var win_rate_dat = Math.round( parseInt(data[cname[i]][0])*10000/( parseInt(data[cname[i]][0])+parseInt(data[cname[i]][1])))/100 + '%'; 
+            console.log(i, win_rate_dat, winrate);
+            setWinRate([...winrate.slice(0, i), win_rate_dat, ...winrate.slice(i+1, 5)]);
         }
+        else if (data['time'] && !data[cname[i]]) {
+            setWinRate([...winrate.slice(0, i), '전적없음', ...winrate.slice(i+1, 5)]);
+        }
+        }).catch(error => {console.log(error);
+            setWinRate([...winrate.slice(0, i), '조회실패', ...winrate.slice(i+1, 5)]);
+            })
+        });
     }
 
     }
@@ -297,27 +296,27 @@ function TeamChampWin() {
                 <div key={0}>
                     <Input addonBefore={'유저1'} placeholder={'유저명1'} style={{'width':'220px'}} onChange={changeName0} value={user0}/>
                     <Input placeholder={'챔피언1'} style={{'width':'160px'}} onChange={changeChamp0} value={champ0}/>
-                    <div>전적: {winrate[0]}</div>
+                    <div>전적: <span onChange={setWinRate}>{winrate[0]}</span></div>
                 </div>
                 <div key={1}>
                     <Input addonBefore={'유저2'} placeholder={'유저명2'} style={{'width':'220px'}} onChange={changeName1} value={user1}/>
                     <Input placeholder={'챔피언2'} style={{'width':'160px'}} onChange={changeChamp1} value={champ1}/>
-                    <div>전적 : {winrate[1]}</div>
+                    <div>전적 : <span onChange={setWinRate}>{winrate[1]}</span></div>
                 </div>
                 <div key={2}>
                     <Input addonBefore={'유저3'} placeholder={'유저명3'} style={{'width':'220px'}} onChange={changeName2} value={user2}/>
                     <Input placeholder={'챔피언3'} style={{'width':'160px'}} onChange={changeChamp2} value={champ2}/>
-                    <div>전적 : {winrate[2]}</div>
+                    <div>전적 : <span onChange={setWinRate}>{winrate[2]}</span></div>
                 </div>
                 <div key={3}>
                     <Input addonBefore={'유저4'} placeholder={'유저명4'} style={{'width':'220px'}} onChange={changeName3} value={user3}/>
                     <Input placeholder={'챔피언4'} style={{'width':'160px'}} onChange={changeChamp3} value={champ3}/>
-                    <div>전적 : {winrate[3]}</div>
+                    <div>전적 : <span onChange={setWinRate}>{winrate[3]}</span></div>
                 </div>
                 <div key={4}>
                     <Input addonBefore={'유저5'} placeholder={'유저명5'} style={{'width':'220px'}} onChange={changeName4} value={user4}/>
                     <Input placeholder={'챔피언5'} style={{'width':'160px'}} onChange={changeChamp4} value={champ4}/>
-                    <div>전적 : {winrate[4]}</div>
+                    <div>전적 : <span onChange={setWinRate}>{winrate[4]}</span></div>
                 </div>
             
             <Button onClick={send_data}>승/패 검색</Button>
