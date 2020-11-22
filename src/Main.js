@@ -208,7 +208,7 @@ function SearchByChampion(){
 function TeamChampWin() {
     const [result, setResult] = React.useState(Object()); //빈 오브젝트 생성
     const [champion, setChampion] = React.useState('');  // 챔피언 이름 지정.
-    const [winrate, setWinRate] = React.useState(Array(5)) // 승률  
+    const [winrate, setWinRate] = React.useState(Array(5)) // 승률   
     const [user0, setUser0] = React.useState(''); //사용자 이름
     const [user1, setUser1] = React.useState(''); //사용자 이름
     const [user2, setUser2] = React.useState(''); //사용자 이름
@@ -260,6 +260,7 @@ function TeamChampWin() {
 
     let user = [user0, user1, user2, user3, user4]
     let champ = [champ0, champ1, champ2, champ3, champ4]
+    let temp_winrate = Array(5)
 
     const send_data = () =>{
         if (user.filter(Boolean).length + champ.filter(Boolean).length ===10) { //모두 null이 아닐 때에만 데이터 전송.
@@ -275,15 +276,16 @@ function TeamChampWin() {
         if (data['time'] && data[cname[i]]) { //승률 정보 갱신.
             var win_rate_dat = Math.round( parseInt(data[cname[i]][0])*10000/( parseInt(data[cname[i]][0])+parseInt(data[cname[i]][1])))/100 + '%'; 
             console.log(i, win_rate_dat, winrate);
-            setWinRate([...winrate.slice(0, i), win_rate_dat, ...winrate.slice(i+1, 5)]);
+            temp_winrate[i] = win_rate_dat
         }
         else if (data['time'] && !data[cname[i]]) {
-            setWinRate([...winrate.slice(0, i), '전적없음', ...winrate.slice(i+1, 5)]);
+            temp_winrate[i] = '전적없음'
         }
         }).catch(error => {console.log(error);
-            setWinRate([...winrate.slice(0, i), '조회실패', ...winrate.slice(i+1, 5)]);
+            temp_winrate[i] ='조회실패'
             })
         });
+        setWinRate(temp_winrate); //마지막으로 승률 지정.
     }
 
     }
