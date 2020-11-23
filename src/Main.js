@@ -92,7 +92,7 @@ function SearchBySummoner(){
         <br/>
         <h3>출력 결과 </h3>
         <div style={{'width':'480px', 'height':'400px', 'overflow':'auto'}}>
-        <Table columns={table_columns} dataSource={table_data?table_data:[]} pagination={{pageSize:5, padding:'20px', size:'small'}} style={{'width':'400px'}}/>
+        <Table onChange={submit_data} columns={table_columns} dataSource={table_data?table_data:[]} pagination={{pageSize:5, padding:'20px', size:'small'}} style={{'width':'400px'}}/>
         
         </div> 
 
@@ -198,7 +198,7 @@ function SearchByChampion(){
                             result[(temp.toLowerCase())]['win'] : null} </span>
         <span> 전체 밴률 : {result[(temp.toLowerCase())]!==undefined? 
                             result[(temp.toLowerCase())]['ban']: null} </span>
-        <Table columns={table_columns} dataSource={table_data?table_data:[]} pagination={{pageSize:6, hideOnSinglePage:true}} style={{'width':'400px'}}/>
+        <Table onChange={submit_data} columns={table_columns} dataSource={table_data?table_data:[]} pagination={{pageSize:6, hideOnSinglePage:true}} style={{'width':'400px'}}/>
         
         </div> 
 
