@@ -22,6 +22,7 @@ function SearchBySummoner(){
       };
 
     const submit_data = () =>{
+        var timerec = new Date().getTime(); //시간 추가
         setTableData([{key:0, champion:'데이터 로딩중'}]);
 
         Axios.get(GetURL+'user/'+value)
@@ -42,6 +43,7 @@ function SearchBySummoner(){
                 : null);
             })):
             setTableData([])
+            console.log('조회시간', (new Date().getTime()-timerec)/1000);
         })
         .catch(error => console.log(error))
     }
