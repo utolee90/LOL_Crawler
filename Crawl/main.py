@@ -97,7 +97,7 @@ def user(name):
     if not user_data.get(name) or len(user_data.get(name))<=2: #데이터가 없을 때는 추가. 프리시즌이므로 지난시즌 정보는 갱신 X
         user_data_new = {}
         p_name = parse.quote_plus(name)
-        driver = webdriver.Chrome()
+        driver = webdriver.Chrome(options=options)
         # #표현 언어를 영어로 바꾸고 싶으면 이 옵션 활성화시키기. 
         driver.get('https://op.gg/')
         driver.find_element_by_xpath('/html/body/div[2]/header/div[2]/div/div/div/div/div/button').send_keys(Keys.ENTER)
@@ -115,7 +115,7 @@ def user(name):
         driver.find_element_by_xpath('//*[@id="champion_season"]/li[2]/a').click()
         time.sleep(5)
         tables = driver.find_elements_by_tag_name('table') #테이블의 규칙으로 찾기
-        trs = tables[1].find_elements_by_xpath('./tbody/tr')
+        trs = tables[-1].find_elements_by_xpath('./tbody/tr')
         print('데이터 출력 길이', len(trs))
         for tr in trs:
             #초기값 설정
