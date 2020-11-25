@@ -14,7 +14,7 @@ CORS(app)
 options = webdriver.ChromeOptions() #headless option  사용 - 창 띄우지 않고 실행
 options.add_argument('headless') #반드시 지정
 #options.add_argument('window-size=1920x1080') #size에 맞추어서 디자인. 사실 불필요. 
-#options.add_argument("disable-gpu") #gpu 가속 끄기.
+options.add_argument("disable-gpu") #gpu 가속 끄기.
 
 
 #champ id English
@@ -96,17 +96,19 @@ def user(name):
     global options
     if not user_data.get(name) or len(user_data.get(name))<=2: #데이터가 없을 때는 추가. 프리시즌이므로 지난시즌 정보는 갱신 X
         user_data_new = {}
+        starttime = time.time()
         p_name = parse.quote_plus(name)
-        driver = webdriver.Chrome(options=options)
+        # driver = webdriver.Chrome(options=options)
+        driver = webdriver.PhantomJS(executable_path='C:/phantomjs/bin/phantomjs.exe')
         # #표현 언어를 영어로 바꾸고 싶으면 이 옵션 활성화시키기. 
         driver.get('https://op.gg/')
         driver.find_element_by_xpath('/html/body/div[2]/header/div[2]/div/div/div/div/div/button').send_keys(Keys.ENTER)
-        time.sleep(2)
+        time.sleep(3)
         lang_list = driver.find_elements_by_class_name('setting-list__item')
         for lang in lang_list:
             if "English" in lang.text:
                 lang.click()
-        time.sleep(2)
+        time.sleep(3)
         driver.find_elements_by_class_name('setting__button')[0].send_keys(Keys.ENTER)
         time.sleep(2)
         # 옵션 끝
@@ -156,6 +158,7 @@ def user(name):
     except:
         user_data_str = ''
     
+    print(time.time()-starttime)
     return user_data_str
 
 @app.route('/champ/<name>')
@@ -181,6 +184,7 @@ def champ(name):
         elif name in id_name_list.keys():  #number
             p_name = name_eng_simple[name]
         driver= webdriver.Chrome() #headless가 오작동... 할수 없이 head 켜고 작동
+        #driver = webdriver.PhantomJS(executable_path='C:/phantomjs/bin/phantomjs.exe')
         driver.get(f'https://www.leagueofgraphs.com/champions/stats/{p_name}/kr')
         time.sleep(10)
         total_popularity = driver.find_element_by_id("graphDD1").get_attribute('innerText')
