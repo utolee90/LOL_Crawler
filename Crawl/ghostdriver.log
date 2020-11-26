@@ -1,76 +1,281 @@
-[INFO  - 2020-11-25T02:35:34.767Z] GhostDriver - Main - running on port 64016
-[INFO  - 2020-11-25T02:35:39.118Z] Session [e7ba9860-2ec6-11eb-b535-574f013891c4] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
-[INFO  - 2020-11-25T02:35:39.118Z] Session [e7ba9860-2ec6-11eb-b535-574f013891c4] - page.customHeaders:  - {}
-[INFO  - 2020-11-25T02:35:39.118Z] Session [e7ba9860-2ec6-11eb-b535-574f013891c4] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"windows-10-32bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
-[INFO  - 2020-11-25T02:35:39.118Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: e7ba9860-2ec6-11eb-b535-574f013891c4
-[ERROR - 2020-11-25T02:35:41.097Z] Session [e7ba9860-2ec6-11eb-b535-574f013891c4] - page.onError - msg: ReferenceError: Can't find variable: WeakMap
+[INFO  - 2020-11-26T07:08:59.751Z] GhostDriver - Main - running on port 51418
+[INFO  - 2020-11-26T07:09:04.068Z] Session [444184f0-2fb6-11eb-88c3-8979e8680c70] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2020-11-26T07:09:04.068Z] Session [444184f0-2fb6-11eb-88c3-8979e8680c70] - page.customHeaders:  - {}
+[INFO  - 2020-11-26T07:09:04.068Z] Session [444184f0-2fb6-11eb-88c3-8979e8680c70] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"windows-10-32bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2020-11-26T07:09:04.069Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 444184f0-2fb6-11eb-88c3-8979e8680c70
+[ERROR - 2020-11-26T07:09:04.953Z] Session [444184f0-2fb6-11eb-88c3-8979e8680c70] - page.onError - msg: ReferenceError: Can't find variable: WeakMap
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2020-11-25T02:35:41.097Z] Session [e7ba9860-2ec6-11eb-b535-574f013891c4] - page.onError - stack:
-  (anonymous function) (https://s.nitropay.com/ads-235.js:1)
-  i (https://s.nitropay.com/ads-235.js:1)
-  (anonymous function) (https://s.nitropay.com/ads-235.js:1)
-  i (https://s.nitropay.com/ads-235.js:1)
-  (anonymous function) (https://s.nitropay.com/ads-235.js:1)
-  i (https://s.nitropay.com/ads-235.js:1)
-  (anonymous function) (https://s.nitropay.com/ads-235.js:1)
-  i (https://s.nitropay.com/ads-235.js:1)
-  (anonymous function) (https://s.nitropay.com/ads-235.js:1)
-  i (https://s.nitropay.com/ads-235.js:1)
-  (anonymous function) (https://s.nitropay.com/ads-235.js:1)
-  i (https://s.nitropay.com/ads-235.js:1)
-  (anonymous function) (https://s.nitropay.com/ads-235.js:1)
-  i (https://s.nitropay.com/ads-235.js:1)
-  (anonymous function) (https://s.nitropay.com/ads-235.js:1)
-  i (https://s.nitropay.com/ads-235.js:1)
-  (anonymous function) (https://s.nitropay.com/ads-235.js:1)
-  i (https://s.nitropay.com/ads-235.js:1)
-  (anonymous function) (https://s.nitropay.com/ads-235.js:1)
-  (anonymous function) (https://s.nitropay.com/ads-235.js:1)
-  n (https://s.nitropay.com/ads-235.js:1)
-  (anonymous function) (https://s.nitropay.com/ads-235.js:1)
-  n (https://s.nitropay.com/ads-235.js:1)
-  (anonymous function) (https://s.nitropay.com/ads-235.js:1)
+[ERROR - 2020-11-26T07:09:04.953Z] Session [444184f0-2fb6-11eb-88c3-8979e8680c70] - page.onError - stack:
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  p (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  p (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  p (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  p (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  p (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  p (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  p (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  p (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  p (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  c (https://hb.vntsm.com/v3/live/ad-manager.min.js:1)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:1)
+  c (https://hb.vntsm.com/v3/live/ad-manager.min.js:1)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  c (https://hb.vntsm.com/v3/live/ad-manager.min.js:1)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:1)
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2020-11-25T02:35:41.104Z] Session [e7ba9860-2ec6-11eb-b535-574f013891c4] - page.onError - msg: ReferenceError: Can't find variable: IntersectionObserver
+[ERROR - 2020-11-26T07:09:05.156Z] Session [444184f0-2fb6-11eb-88c3-8979e8680c70] - page.onError - msg: FirebaseError: Messaging: This browser doesn't support the API's required to use the firebase SDK. (messaging/unsupported-browser).
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2020-11-25T02:35:41.104Z] Session [e7ba9860-2ec6-11eb-b535-574f013891c4] - page.onError - stack:
-  (anonymous function) (https://s.nitropay.com/aan-235.js:1)
-  n (https://s.nitropay.com/aan-235.js:1)
-  (anonymous function) (https://s.nitropay.com/aan-235.js:1)
-  n (https://s.nitropay.com/aan-235.js:1)
-  (anonymous function) (https://s.nitropay.com/aan-235.js:1)
-  n (https://s.nitropay.com/aan-235.js:1)
-  (anonymous function) (https://s.nitropay.com/aan-235.js:1)
-  n (https://s.nitropay.com/aan-235.js:1)
-  (anonymous function) (https://s.nitropay.com/aan-235.js:1)
+[ERROR - 2020-11-26T07:09:05.156Z] Session [444184f0-2fb6-11eb-88c3-8979e8680c70] - page.onError - stack:
+  (anonymous function) (https://www.gstatic.com/firebasejs/5.5.2/firebase-messaging.js:1)
+  create (https://www.gstatic.com/firebasejs/5.5.2/firebase-messaging.js:1)
+  (anonymous function) (https://www.gstatic.com/firebasejs/5.5.2/firebase-messaging.js:1)
+  _getService (https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js:1)
+  (anonymous function) (:0)
+  (anonymous function) (https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js:1)
+  f (https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js:1)
+  initFCM (https://opgg-static.akamaized.net/js3/fcm.js:10)
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2020-11-25T02:35:41.422Z] Session [e7ba9860-2ec6-11eb-b535-574f013891c4] - page.onError - msg: ReferenceError: Can't find variable: Infobanner
+[ERROR - 2020-11-26T07:09:05.898Z] Session [444184f0-2fb6-11eb-88c3-8979e8680c70] - page.onError - msg: ReferenceError: Can't find variable: Map
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2020-11-25T02:35:41.422Z] Session [e7ba9860-2ec6-11eb-b535-574f013891c4] - page.onError - stack:
-  (anonymous function) (https://www.leagueofgraphs.com/champions/stats/soraka/kr:2820)
-  i (https://lolg-cdn.porofessor.gg/jquery.js?v=3:2)
-  fireWith (https://lolg-cdn.porofessor.gg/jquery.js?v=3:2)
-  ready (https://lolg-cdn.porofessor.gg/jquery.js?v=3:2)
-  J (https://lolg-cdn.porofessor.gg/jquery.js?v=3:2)
+[ERROR - 2020-11-26T07:09:05.898Z] Session [444184f0-2fb6-11eb-88c3-8979e8680c70] - page.onError - stack:
+  (anonymous function) (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  (anonymous function) (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  t (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  (anonymous function) (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  t (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  (anonymous function) (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  t (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  (anonymous function) (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  t (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  (anonymous function) (https://beacon-v2.helpscout.net/static/js/main.3cfae3d4.js:8)
+  t (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  (anonymous function) (https://beacon-v2.helpscout.net/static/js/main.3cfae3d4.js:8)
+  t (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  (anonymous function) (https://beacon-v2.helpscout.net/static/js/main.3cfae3d4.js:8)
+  t (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  (anonymous function) (https://beacon-v2.helpscout.net/static/js/main.3cfae3d4.js:8)
+  t (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  (anonymous function) (https://beacon-v2.helpscout.net/static/js/main.3cfae3d4.js:8)
+  t (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  (anonymous function) (https://beacon-v2.helpscout.net/static/js/main.3cfae3d4.js:8)
+  t (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  (anonymous function) (https://beacon-v2.helpscout.net/static/js/main.3cfae3d4.js:8)
+  t (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  beaconJsonp (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2020-11-25T02:35:52.005Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1606271752003
+[ERROR - 2020-11-26T07:09:13.391Z] Session [444184f0-2fb6-11eb-88c3-8979e8680c70] - page.onError - msg: ReferenceError: Can't find variable: WeakMap
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2020-11-25T02:35:53.218Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1606271753159
+[ERROR - 2020-11-26T07:09:13.391Z] Session [444184f0-2fb6-11eb-88c3-8979e8680c70] - page.onError - stack:
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  p (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  p (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  p (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  p (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  p (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  p (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  p (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  p (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  p (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  c (https://hb.vntsm.com/v3/live/ad-manager.min.js:1)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:1)
+  c (https://hb.vntsm.com/v3/live/ad-manager.min.js:1)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  c (https://hb.vntsm.com/v3/live/ad-manager.min.js:1)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:1)
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2020-11-25T02:35:54.372Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1606271754325
+[ERROR - 2020-11-26T07:09:13.441Z] Session [444184f0-2fb6-11eb-88c3-8979e8680c70] - page.onError - msg: FirebaseError: Messaging: This browser doesn't support the API's required to use the firebase SDK. (messaging/unsupported-browser).
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2020-11-25T02:35:55.471Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1606271755419
+[ERROR - 2020-11-26T07:09:13.441Z] Session [444184f0-2fb6-11eb-88c3-8979e8680c70] - page.onError - stack:
+  (anonymous function) (https://www.gstatic.com/firebasejs/5.5.2/firebase-messaging.js:1)
+  create (https://www.gstatic.com/firebasejs/5.5.2/firebase-messaging.js:1)
+  (anonymous function) (https://www.gstatic.com/firebasejs/5.5.2/firebase-messaging.js:1)
+  _getService (https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js:1)
+  (anonymous function) (:0)
+  (anonymous function) (https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js:1)
+  f (https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js:1)
+  initFCM (https://opgg-static.akamaized.net/js3/fcm.js:10)
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2020-11-25T02:35:56.595Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1606271756546
+[ERROR - 2020-11-26T07:09:13.915Z] Session [444184f0-2fb6-11eb-88c3-8979e8680c70] - page.onError - msg: ReferenceError: Can't find variable: Map
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-11-26T07:09:13.915Z] Session [444184f0-2fb6-11eb-88c3-8979e8680c70] - page.onError - stack:
+  (anonymous function) (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  (anonymous function) (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  t (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  (anonymous function) (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  t (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  (anonymous function) (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  t (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  (anonymous function) (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  t (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  (anonymous function) (https://beacon-v2.helpscout.net/static/js/main.3cfae3d4.js:8)
+  t (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  (anonymous function) (https://beacon-v2.helpscout.net/static/js/main.3cfae3d4.js:8)
+  t (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  (anonymous function) (https://beacon-v2.helpscout.net/static/js/main.3cfae3d4.js:8)
+  t (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  (anonymous function) (https://beacon-v2.helpscout.net/static/js/main.3cfae3d4.js:8)
+  t (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  (anonymous function) (https://beacon-v2.helpscout.net/static/js/main.3cfae3d4.js:8)
+  t (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  (anonymous function) (https://beacon-v2.helpscout.net/static/js/main.3cfae3d4.js:8)
+  t (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  (anonymous function) (https://beacon-v2.helpscout.net/static/js/main.3cfae3d4.js:8)
+  t (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  beaconJsonp (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-11-26T07:09:16.196Z] Session [444184f0-2fb6-11eb-88c3-8979e8680c70] - page.onError - msg: ReferenceError: Can't find variable: WeakMap
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-11-26T07:09:16.196Z] Session [444184f0-2fb6-11eb-88c3-8979e8680c70] - page.onError - stack:
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  p (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  p (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  p (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  p (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  p (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  p (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  p (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  p (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  p (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  c (https://hb.vntsm.com/v3/live/ad-manager.min.js:1)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:1)
+  c (https://hb.vntsm.com/v3/live/ad-manager.min.js:1)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:35)
+  c (https://hb.vntsm.com/v3/live/ad-manager.min.js:1)
+  (anonymous function) (https://hb.vntsm.com/v3/live/ad-manager.min.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-11-26T07:09:16.359Z] Session [444184f0-2fb6-11eb-88c3-8979e8680c70] - page.onError - msg: FirebaseError: Messaging: This browser doesn't support the API's required to use the firebase SDK. (messaging/unsupported-browser).
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-11-26T07:09:16.360Z] Session [444184f0-2fb6-11eb-88c3-8979e8680c70] - page.onError - stack:
+  (anonymous function) (https://www.gstatic.com/firebasejs/5.5.2/firebase-messaging.js:1)
+  create (https://www.gstatic.com/firebasejs/5.5.2/firebase-messaging.js:1)
+  (anonymous function) (https://www.gstatic.com/firebasejs/5.5.2/firebase-messaging.js:1)
+  _getService (https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js:1)
+  (anonymous function) (:0)
+  (anonymous function) (https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js:1)
+  f (https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js:1)
+  initFCM (https://opgg-static.akamaized.net/js3/fcm.js:10)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-11-26T07:09:16.792Z] Session [444184f0-2fb6-11eb-88c3-8979e8680c70] - page.onError - msg: ReferenceError: Can't find variable: Map
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-11-26T07:09:16.792Z] Session [444184f0-2fb6-11eb-88c3-8979e8680c70] - page.onError - stack:
+  (anonymous function) (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  (anonymous function) (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  t (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  (anonymous function) (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  t (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  (anonymous function) (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  t (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  (anonymous function) (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  t (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  (anonymous function) (https://beacon-v2.helpscout.net/static/js/main.3cfae3d4.js:8)
+  t (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  (anonymous function) (https://beacon-v2.helpscout.net/static/js/main.3cfae3d4.js:8)
+  t (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  (anonymous function) (https://beacon-v2.helpscout.net/static/js/main.3cfae3d4.js:8)
+  t (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  (anonymous function) (https://beacon-v2.helpscout.net/static/js/main.3cfae3d4.js:8)
+  t (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  (anonymous function) (https://beacon-v2.helpscout.net/static/js/main.3cfae3d4.js:8)
+  t (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  (anonymous function) (https://beacon-v2.helpscout.net/static/js/main.3cfae3d4.js:8)
+  t (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  (anonymous function) (https://beacon-v2.helpscout.net/static/js/main.3cfae3d4.js:8)
+  t (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+  beaconJsonp (https://beacon-v2.helpscout.net/static/js/vendor.0ea8cd5f.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-11-26T07:09:24.373Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1606374564329
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-11-26T07:09:25.216Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1606374565175
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-11-26T07:09:25.957Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1606374565890
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-11-26T07:09:26.617Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1606374566570
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-11-26T07:09:27.284Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1606374567275
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-11-26T07:09:27.915Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1606374567912
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-11-26T07:09:28.585Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1606374568521
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-11-26T07:09:29.294Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1606374569265
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-11-26T07:09:30.028Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1606374569996
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-11-26T07:09:30.679Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1606374570645
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-11-26T07:09:31.308Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1606374571280
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-11-26T07:09:31.950Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1606374571921
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-11-26T07:09:32.692Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1606374572644
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-11-26T07:09:33.360Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1606374573310
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-11-26T07:09:34.006Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1606374573962
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-11-26T07:09:34.672Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1606374574618
 
   phantomjs://platform/console++.js:263 in error
