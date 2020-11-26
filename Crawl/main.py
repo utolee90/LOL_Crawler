@@ -150,7 +150,7 @@ def user(name):
             
         with open('data.json', 'w', encoding='utf8') as f:
             json.dump(user_data, f, ensure_ascii=False)
-        
+        print(time.time()-starttime)
         driver.quit()
     
     try:
@@ -158,7 +158,7 @@ def user(name):
     except:
         user_data_str = ''
     
-    print(time.time()-starttime)
+    
     return user_data_str
 
 @app.route('/champ/<name>')
