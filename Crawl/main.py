@@ -6,6 +6,9 @@ from lxml import etree, html
 import json, time, os
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 
 app = Flask(__name__)
 CORS(app)
@@ -98,24 +101,24 @@ def user(name):
         user_data_new = {}
         starttime = time.time()
         p_name = parse.quote_plus(name)
-        # driver = webdriver.Chrome(options=options)
-        driver = webdriver.PhantomJS(executable_path='C:/phantomjs/bin/phantomjs.exe')
+        driver = webdriver.Chrome()
+        w = WebDriverWait(driver, 10)
+        #driver = webdriver.PhantomJS(executable_path='C:/phantomjs/bin/phantomjs.exe')
         # #표현 언어를 영어로 바꾸고 싶으면 이 옵션 활성화시키기. 
         driver.get('https://op.gg/')
-        driver.find_element_by_xpath('/html/body/div[2]/header/div[2]/div/div/div/div/div/button').send_keys(Keys.ENTER)
-        time.sleep(3)
+        w.until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[2]/header/div[2]/div/div/div/div/div/button' ))).click()
+        w.until(EC.presence_of_all_elements_located((By.CLASS_NAME,'setting-list__item' )))
+        # time.sleep(2)
         lang_list = driver.find_elements_by_class_name('setting-list__item')
         for lang in lang_list:
             if "English" in lang.text:
                 lang.click()
-        time.sleep(3)
-        driver.find_elements_by_class_name('setting__button')[0].send_keys(Keys.ENTER)
-        time.sleep(2)
+        w.until(EC.element_to_be_clickable((By.CLASS_NAME,'setting__button'))).click()
         # 옵션 끝
         driver.get(f'https://www.op.gg/summoner/champions/userName={p_name}')
+        w.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="champion_season"]/li[2]/a' ))).click()
+        w.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR,'table:last-of-type>tbody>tr') ))
         time.sleep(2)
-        driver.find_element_by_xpath('//*[@id="champion_season"]/li[2]/a').click()
-        time.sleep(5)
         tables = driver.find_elements_by_tag_name('table') #테이블의 규칙으로 찾기
         trs = tables[-1].find_elements_by_xpath('./tbody/tr')
         print('데이터 출력 길이', len(trs))
