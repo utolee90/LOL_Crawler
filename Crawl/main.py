@@ -2,6 +2,7 @@ from flask import Flask
 from flask_cors import CORS
 import requests
 from urllib import parse
+from bs4 import BeautifulSoup
 from lxml import etree, html
 import json, time, os
 from selenium import webdriver
@@ -85,6 +86,42 @@ def match_kor_eng(name, simple=False): #챔피언 이름 확인
 @app.route('/')
 def index():
     return '''<h1>LOL Crawler</h1>'''
+
+@app.route('/test/<name>')
+def tester(name, champ=None):
+    starttime = time.time()
+    p_name = parse.quote_plus(name)
+    html = requests.get(f'https://www.op.gg/summoner/champions/userName={p_name}').text
+    soup2 = BeautifulSoup(html, 'lxml')
+    txt = soup2.find_all('div', {'class':'season-15'})[0].get_attribute_list('data-tab-data-url')[0]
+    html3 = requests.get('https://op.gg'+txt).text
+    soup0 = BeautifulSoup(html3, 'lxml')
+    trs = soup0.find_all('tr')
+    user_dict = dict()
+    for tr in trs:
+        if len(tr.find_all('td'))>0:
+            champ = simplify(tr.find_all('td')[2].text.replace('\n', ''))
+            played = tr.find_all('td')[3]
+            if len(played.find_all('div', {'class':'Text Left'}))>0: 
+                win = played.find_all('div', {'class':'Text Left'})[0].text 
+            else:
+                win = '0W'
+            if len(played.find_all('div', {'class':'Text Right'}))>0:
+                lose = played.find_all('div', {'class':'Text Right'})[0].text
+            else:
+                lose = '0L'
+            if len(played.find_all('span', {'class':'WinRatio'}))>0:
+                winrate = played.find_all('span', {'class':'WinRatio'})[0].text
+            else:
+                winrate = '0%'
+            user_dict[champ] = [win, lose, winrate]
+    
+    print(time.time()-starttime)
+    return json.dumps(user_dict, ensure_ascii=False)
+        
+        
+    
+
 
 @app.route('/user/<name>')
 def user(name):
